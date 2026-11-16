@@ -19,8 +19,6 @@ jobs:
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Preparar Python
         uses: actions/setup-python@v5
@@ -30,17 +28,17 @@ jobs:
       - name: Instalar dependencias
         run: pip install requests beautifulsoup4
 
-      - name: Comprobar nuevas publicaciones
+      - name: Comprobar publicaciones
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python vigilancia.py
 
-      - name: Guardar historial de enlaces
+      - name: Guardar historial
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add enlaces_detectados.json
           if ! git diff --cached --quiet; then
-            git commit -m "Actualizar historial de publicaciones"
+            git commit -m "Actualizar historial"
             git push
           fi
