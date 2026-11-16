@@ -26,3 +26,7 @@ jobs:
 
       - name: Comprobar publicaciones
         run: python vigilancia.py
+        run: pip install requests beautifulsoup4
+
+      - name: Comprobar publicaciones
+        run: python vigilancia.py
