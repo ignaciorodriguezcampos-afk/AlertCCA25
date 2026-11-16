@@ -2,7 +2,7 @@ name: Vigilancia Camara de Cuentas
 
 on:
   schedule:
-    - cron: '*/2 * * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 permissions:
